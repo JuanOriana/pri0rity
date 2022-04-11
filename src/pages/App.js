@@ -41,6 +41,11 @@ function App() {
               />
             ))}
           </div>
+          {taskLists.length === 0 && (
+            <h2 className="self-center text-2xl font-bold text-brand-main text-center p-3 pt-10 ">
+              You don't have any task groups, add one to start optimizing! 👨🏻‍💻️
+            </h2>
+          )}
         </div>
 
         {/*MODAL*/}
@@ -123,6 +128,7 @@ function App() {
                 Exit
               </button>
               <button
+                disabled={newName === ""}
                 className="bg-brand-main w-20 rounded-xl p-2 disabled:opacity-75 disabled:text-gray
                 hover:bg-brand-light ease-in-out duration-150"
                 onClick={() => {
