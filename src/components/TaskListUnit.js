@@ -1,13 +1,14 @@
 import React from "react";
-import { GoTrashcan, GoVerified, GoX } from "react-icons/go";
+import { GoTrashcan, GoVerified, GoX,GoKebabVertical } from "react-icons/go";
 import { useDispatch } from "react-redux";
 import {changeTaskCompletition, removeList} from "../slices/taskListsSlice";
 import { toggleTypes, turnOnModal } from "../slices/taskModalSlice";
+import TaskOptionsDropdown from "./TaskOptionsDropdown";
 
 const TaskListUnit = ({ id, name, tasks }) => {
   const dispatch = useDispatch();
   return (
-    <div className="bg-brand-main flex flex-col rounded-xl text-white p-3 w-80 mx-4 mb-4 h-80">
+    <div className="bg-brand-main flex flex-col rounded-xl text-white p-3 w-80 mx-4 mb-4 h-80 shadow-lg">
       <div className="flex justify-between">
         <h3 className="text-lg font-bold text-white">{name}</h3>
         <button onClick={() => dispatch(removeList(id))}>
@@ -23,6 +24,7 @@ const TaskListUnit = ({ id, name, tasks }) => {
             {!task.isDone && <GoVerified />}
             {task.isDone && <GoX />}
           </button>
+            <TaskOptionsDropdown/>
         </div>
       ))}
       <button
