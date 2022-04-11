@@ -1,7 +1,7 @@
 import React from "react";
 import { GoTrashcan, GoVerified, GoX } from "react-icons/go";
 import { useDispatch } from "react-redux";
-import { removeList } from "../slices/taskListsSlice";
+import {changeTaskCompletition, removeList} from "../slices/taskListsSlice";
 import { toggleTypes, turnOnModal } from "../slices/taskModalSlice";
 
 const TaskListUnit = ({ id, name, tasks }) => {
@@ -17,9 +17,9 @@ const TaskListUnit = ({ id, name, tasks }) => {
       <hr className="my-2" />
       {tasks.map((task) => (
         <div className="flex text-white" key={task.id}>
-          <p className="w-10/12">{task.name}</p>
-          <p className="w-6">{task.difficulty}</p>
-          <button>
+          <p className={`w-10/12 ${task.isDone?"line-through text-gray-300":""}`}>{task.name}</p>
+          <p className={`w-6 ${task.isDone?"line-through text-gray-300":""}`}>{task.difficulty}</p>
+          <button onClick={()=>dispatch(changeTaskCompletition({listId:id,taskId:task.id}))}>
             {!task.isDone && <GoVerified />}
             {task.isDone && <GoX />}
           </button>

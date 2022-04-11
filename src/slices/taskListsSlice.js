@@ -23,8 +23,16 @@ const taskListsSlice = createSlice({
       idx >= 0 &&
         state[idx].tasks.push({ id, name, difficulty, isDone: false });
     },
+    changeTaskCompletition:(state,action) =>{
+      const {listId, taskId} = action.payload;
+      const listIdx = state.findIndex((list)=>list.id === listId);
+      if (listIdx < 0) return;
+      const taskIdx = state[listIdx].tasks.findIndex((task)=>task.id === taskId);
+      if (taskId < 0) return;
+      state[listIdx].tasks[taskIdx].isDone = !state[listIdx].tasks[taskIdx].isDone;
+    }
   },
 });
 
-export const { addList, removeList, addTaskToList } = taskListsSlice.actions;
+export const { addList, removeList, addTaskToList, changeTaskCompletition } = taskListsSlice.actions;
 export default taskListsSlice.reducer;
