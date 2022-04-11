@@ -19,7 +19,7 @@ function App() {
         <Navbar />
         <div className="flex flex-col flex-1">
           <button
-            className="bg-brand-highlight w-64 self-center mt-5 text-white font-bold
+            className="bg-brand-highlight w-64 self-center mt-8 mb-3 text-white font-bold
             rounded-2xl hover:bg-brand-highlight_light hover:text-brand-highlight
              px-3 py-1 ease-in-out duration-150"
             onClick={() => setModal(!showModal)}

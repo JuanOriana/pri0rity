@@ -38,10 +38,10 @@ function Navbar() {
           <div className="text-md lg:ml-3 lg:flex-grow text-brand-light">
             <a
               target="_blank"
-              href="https://github.com/JuanOriana"
+              href="https://github.com/JuanOriana/pri0rity"
               className="block mt-4 lg:inline-block lg:mt-0 hover:text-white mr-4"
             >
-              Docs
+              Code
             </a>
             <a
               target="_blank"
