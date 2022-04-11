@@ -1,6 +1,6 @@
 import React from "react";
 
-const Modal = ({ children }) => (
+const ModalBase = ({ children }) => (
   <>
     <div className="w-full h-full bg-black opacity-50 top-0 absolute" />
     <div
@@ -12,4 +12,4 @@ const Modal = ({ children }) => (
   </>
 );
 
-export default Modal;
+export default ModalBase;

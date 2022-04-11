@@ -2,7 +2,7 @@ import React from "react";
 import { GoTrashcan, GoVerified, GoX } from "react-icons/go";
 import { useDispatch } from "react-redux";
 import { removeList } from "../slices/taskListsSlice";
-import { toggleTaskModal } from "../slices/taskModalSlice";
+import { toggleTypes, turnOnModal } from "../slices/taskModalSlice";
 
 const TaskListUnit = ({ id, name, tasks }) => {
   const dispatch = useDispatch();
@@ -29,7 +29,9 @@ const TaskListUnit = ({ id, name, tasks }) => {
         className="bg-brand-highlight rounded-full w-10 h-10 text-3xl
     self-center mt-3 hover:bg-brand-highlight_light hover:text-brand-highlight
     ease-in-out duration-300"
-        onClick={() => dispatch(toggleTaskModal(id))}
+        onClick={() =>
+          dispatch(turnOnModal({ id, type: toggleTypes.TOGGLE_NEW_TASK }))
+        }
       >
         +
       </button>
