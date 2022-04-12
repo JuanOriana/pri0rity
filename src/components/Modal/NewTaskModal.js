@@ -33,18 +33,18 @@ const NewTaskModal = () => {
       <div className="flex my-2 items-center flex-col items-baseline w-10/12 ">
         <label className="font-bold">Description:</label>
         <textarea
-          className="w-full border-2 rounded-md p-1 resize-none h-32"
+          className="w-full border-2 border-brand-light rounded-md p-1 resize-none h-32 focus:outline-none focus:border-brand-main"
           value={newDesc}
           onChange={(e) => setNewDesc(e.target.value)}
         />
       </div>
       <div className="flex my-2 items-center ">
-        <label className="mr-3 font-bold">Difficulty -></label>
+        <label className="mr-3 font-bold">Difficulty</label>
         <input
           type="number"
           min={1}
           max={3}
-          className="border-2 rounded-md p-1"
+          className="border-brand-light border-2 rounded-md p-1 focus:outline-none focus:border-brand-main"
           value={newDifficulty}
           onChange={(event) => setNewDifficulty(parseInt(event.target.value))}
         />

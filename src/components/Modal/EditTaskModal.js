@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { ModalBase, ModalInput } from "../index";
 import { turnOffModal } from "../../slices/taskModalSlice";
-import {
-  changeTaskCompletition,
-  editTask,
-} from "../../slices/taskListsSlice";
+import { changeTaskCompletition, editTask } from "../../slices/taskListsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { GoCheck, GoX } from "react-icons/go";
 import { findTask } from "../../utils/finders";
@@ -25,7 +22,7 @@ const EditTaskModal = () => {
   return (
     <ModalBase>
       <span
-        className="absolute top-2 right-2 cursor-pointer text-3xl"
+        className="absolute top-2 right-2 cursor-pointer text-3xl "
         onClick={() => {
           dispatch(turnOffModal());
           setNewName("");
@@ -35,7 +32,7 @@ const EditTaskModal = () => {
       </span>
       {!editingName && (
         <h1
-          className="text-lg font-bold w-10/12 hover:bg-gray-300 cursor-pointer rounded-md p-1"
+          className="text-lg font-bold w-10/12 hover:bg-gray-200 cursor-pointer rounded-md p-1 ease-in-out duration-200"
           onClick={() => setEditingName(true)}
         >
           {task.name}
@@ -46,7 +43,7 @@ const EditTaskModal = () => {
           <ModalInput type="text" value={newName} changer={setNewName} bold />{" "}
           <div className="flex self-end mr-1 text-center p-0 text-xl -mt-0.5 z-1">
             <button
-              className="bg-white flex justify-center self-end rounded-bl-xl w-12 text-red-700 border-2 hover:bg-gray-200 border-brand-main"
+              className="bg-white flex justify-center self-end rounded-bl-xl w-12 text-red-700 border-2 hover:bg-gray-200 border-brand-light"
               onClick={() => {
                 setNewName(task.name);
                 setEditingName(false);
@@ -56,7 +53,7 @@ const EditTaskModal = () => {
             </button>
             <button
               disabled={newName === ""}
-              className="bg-white flex justify-center rounded-br-xl w-12 text-green-700 border-2 hover:bg-gray-200 border-brand-main"
+              className="bg-white flex justify-center rounded-br-xl w-12 text-green-700 border-2 hover:bg-gray-200 border-brand-light"
               onClick={() => {
                 setTask({ ...task, name: newName });
                 dispatch(
@@ -81,7 +78,8 @@ const EditTaskModal = () => {
             <label className="font-bold">Description</label>
             {!editingDesc && (
               <p
-                className="w-full rounded-md p-1 resize-none h-32 hover:bg-gray-300 cursor-pointer rounded-md p-1"
+                className="w-full rounded-md p-1 resize-none h-32 hover:bg-gray-200 cursor-pointer rounded-md p-1
+                ease-in-out duration-150"
                 onClick={() => setEditingDesc(true)}
               >
                 {task.description}
@@ -90,13 +88,13 @@ const EditTaskModal = () => {
             {editingDesc && (
               <>
                 <textarea
-                  className="w-full border-2 rounded-md p-1 resize-none h-32 border-brand-main"
+                  className="w-full border-2 rounded-md p-1 resize-none h-32 border-brand-light focus:outline-none focus:border-brand-main"
                   value={newDesc}
                   onChange={(e) => setNewDesc(e.target.value)}
                 />
                 <div className="flex self-end mr-1 text-center p-0 text-xl -mt-0.5 z-1">
                   <button
-                    className="bg-white flex justify-center self-end rounded-bl-xl w-12 text-red-700 border-2 hover:bg-gray-200 border-brand-main"
+                    className="bg-white flex justify-center self-end rounded-bl-xl w-12 text-red-700 border-2 hover:bg-gray-200 border-brand-light"
                     onClick={() => {
                       setNewDesc(task.description);
                       setEditingDesc(false);
@@ -105,7 +103,7 @@ const EditTaskModal = () => {
                     <GoX />
                   </button>
                   <button
-                    className="bg-white flex justify-center rounded-br-xl w-12 text-green-700 border-2 hover:bg-gray-200 border-brand-main"
+                    className="bg-white flex justify-center rounded-br-xl w-12 text-green-700 border-2 hover:bg-gray-200 border-brand-light"
                     onClick={() => {
                       setTask({ ...task, description: newDesc });
                       dispatch(
@@ -127,12 +125,12 @@ const EditTaskModal = () => {
         )}
       </div>
       <div className="flex my-2 items-center ">
-        <label className="mr-3 font-bold">Difficulty -></label>
+        <label className="mr-3 font-bold">Difficulty </label>
         <input
           type="number"
           min={1}
           max={3}
-          className="border-2 rounded-md p-1"
+          className="border-brand-light border-2 rounded-md p-1 focus:outline-none focus:border-brand-main"
           value={newDifficulty}
           onChange={(event) => {
             const diffToInt = parseInt(event.target.value);
