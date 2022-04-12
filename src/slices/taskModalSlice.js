@@ -1,18 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { isToggled: false, togglerId: -1 };
+export const toggleTypes = {
+  TOGGLE_NONE: 0,
+  TOGGLE_NEW_LIST: 1,
+  TOGGLE_NEW_TASK: 2,
+  TOGGLE_EDIT_TASK: 3,
+};
+const initialState = {
+  isToggled: false,
+  togglerId: -1,
+  secondaryTogglerId: -1,
+  toggleType: toggleTypes.TOGGLE_NONE,
+};
 const taskModalSlice = createSlice({
   name: "taskModal",
   initialState,
   reducers: {
-    toggleTaskModal(state, action) {
+    turnOnModal(state, action) {
       return {
-        isToggled: !state.isToggled,
-        togglerId: action.payload || -1,
+        isToggled: true,
+        togglerId: action.payload.id || -1,
+        secondaryTogglerId: action.payload.secondaryId || -1,
+        toggleType: action.payload.type || toggleTypes.TOGGLE_NONE,
+      };
+    },
+    turnOffModal() {
+      return {
+        isToggled: false,
+        togglerId: -1,
+        secondaryTogglerId: -1,
+        toggleType: toggleTypes.TOGGLE_NONE,
       };
     },
   },
 });
 
-export const { toggleTaskModal } = taskModalSlice.actions;
+export const { turnOffModal, turnOnModal } = taskModalSlice.actions;
 export default taskModalSlice.reducer;

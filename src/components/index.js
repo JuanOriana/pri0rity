@@ -1,6 +1,7 @@
 import Footer from "./Footer";
-import Modal from "./Modal";
+import ModalBase from "./Modal/ModalBase";
+import ModalInput from "./Modal/ModalInput";
 import Navbar from "./Navbar";
 import TaskListUnit from "./TaskListUnit";
 
-export { Footer, Modal, Navbar, TaskListUnit };
+export { Footer, ModalBase, ModalInput, Navbar, TaskListUnit };
