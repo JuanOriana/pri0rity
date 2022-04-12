@@ -79,7 +79,7 @@ const EditTaskModal = () => {
             {!editingDesc && (
               <p
                 className="w-full rounded-md p-1 resize-none h-32 hover:bg-gray-200 cursor-pointer rounded-md p-1
-                ease-in-out duration-150"
+                ease-in-out duration-150 whitespace-pre-line"
                 onClick={() => setEditingDesc(true)}
               >
                 {task.description}
