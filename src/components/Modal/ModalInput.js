@@ -3,7 +3,7 @@ import React from "react";
 const ModalInput = ({ type, value, changer }) => (
   <input
     type={type}
-    className="border-2 rounded-md p-1"
+    className="border-2 rounded-md p-1 w-full"
     value={value}
     onChange={(event) => changer(event.target.value)}
   />
