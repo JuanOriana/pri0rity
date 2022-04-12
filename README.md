@@ -3,8 +3,10 @@
 ![License](https://img.shields.io/github/license/JuanOriana/pri0rity)
 # pri0rity ⚙️
 
-A basic productivity manager created in React, using Tailwind and Redux.
-Currently hosted in [Vercel](https://pri0rity.vercel.app/).
+A basic productivity manager that will find the best task for you to work on at the moment, based on a priority system. 
+
+The webapp is created in React, using Tailwind and Redux.
+Currently hosted on [Vercel](https://pri0rity.vercel.app/).
 
 ## Images
 <img src="docs/assets/screen1.png">
