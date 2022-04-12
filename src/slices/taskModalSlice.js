@@ -4,10 +4,12 @@ export const toggleTypes = {
   TOGGLE_NONE: 0,
   TOGGLE_NEW_LIST: 1,
   TOGGLE_NEW_TASK: 2,
+  TOGGLE_EDIT_TASK: 3,
 };
 const initialState = {
   isToggled: false,
   togglerId: -1,
+  secondaryTogglerId: -1,
   toggleType: toggleTypes.TOGGLE_NONE,
 };
 const taskModalSlice = createSlice({
@@ -18,6 +20,7 @@ const taskModalSlice = createSlice({
       return {
         isToggled: true,
         togglerId: action.payload.id || -1,
+        secondaryTogglerId: action.payload.secondaryId || -1,
         toggleType: action.payload.type || toggleTypes.TOGGLE_NONE,
       };
     },
@@ -25,6 +28,7 @@ const taskModalSlice = createSlice({
       return {
         isToggled: false,
         togglerId: -1,
+        secondaryTogglerId: -1,
         toggleType: toggleTypes.TOGGLE_NONE,
       };
     },

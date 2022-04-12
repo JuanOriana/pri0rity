@@ -7,7 +7,10 @@ import { toggleTypes, turnOnModal } from "../slices/taskModalSlice";
 const TaskListUnit = ({ id, name, tasks }) => {
   const dispatch = useDispatch();
   return (
-    <div className="bg-brand-main flex flex-col rounded-xl text-white w-80 mx-4 mb-4 h-80 shadow-lg">
+    <div
+      className="bg-brand-main flex flex-col rounded-xl text-white w-80 mx-4 mb-4 h-80
+    shadow-[0_15px_60px_-15px_rgba(0,0,0,0.3)]"
+    >
       <div className="flex justify-between px-6 py-2">
         <h3 className="text-lg font-bold text-white">{name}</h3>
         <button onClick={() => dispatch(removeList(id))}>
@@ -20,6 +23,15 @@ const TaskListUnit = ({ id, name, tasks }) => {
           className="flex text-white hover:bg-brand-light rounded-sm px-4 cursor-pointer
           ease-in-out duration-200 justify-between text-md py-0.5"
           key={task.id}
+          onClick={() =>
+            dispatch(
+              turnOnModal({
+                id,
+                secondaryId: task.id,
+                type: toggleTypes.TOGGLE_EDIT_TASK,
+              })
+            )
+          }
         >
           <p className={` ${task.isDone ? "line-through text-gray-300" : ""}`}>
             {task.name}

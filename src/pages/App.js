@@ -5,6 +5,7 @@ import { GoPlus } from "react-icons/go";
 import { toggleTypes, turnOnModal } from "../slices/taskModalSlice";
 import NewTaskListModal from "../components/Modal/NewTaskListModal";
 import NewTaskModal from "../components/Modal/NewTaskModal";
+import EditTaskModal from "../components/Modal/EditTaskModal";
 
 function App() {
   const taskLists = useSelector((state) => state.taskLists) || [];
@@ -17,6 +18,8 @@ function App() {
         return <NewTaskListModal />;
       case toggleTypes.TOGGLE_NEW_TASK:
         return <NewTaskModal />;
+      case toggleTypes.TOGGLE_EDIT_TASK:
+        return <EditTaskModal />;
       default:
         return <></>;
     }
@@ -27,8 +30,8 @@ function App() {
         <Navbar />
         <div className="flex flex-col flex-1">
           <button
-            className="bg-brand-highlight w-64 self-center mt-8 mb-3 text-white font-bold
-            rounded-2xl hover:bg-brand-highlight_light hover:text-brand-highlight
+            className="bg-brand-dark w-64 self-center mt-8 mb-3 text-white font-bold
+            rounded-2xl hover:bg-brand-light
              px-3 py-1 ease-in-out duration-150"
             onClick={() =>
               dispatch(turnOnModal({ type: toggleTypes.TOGGLE_NEW_LIST }))
