@@ -29,8 +29,8 @@ function App() {
     <>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <div className="flex flex-col flex-1">
-          <div className="flex w-full justify-evenly w-9/12 self-center items-center ">
+        <div className="flex flex-col flex-1 items-center">
+          <div className="flex w-full justify-evenly w-9/12 self-center items-center flex-col mb-10 lg:flex-row lg:mb-0">
             {taskLists.length > 0 && optimalTask && (
               <div className="flex">
                 <p
@@ -56,7 +56,7 @@ function App() {
                 </p>
                 <img
                   src="/images/lil_guy.svg"
-                  className="w-64 mt-12"
+                  className="w-64 mt-12 "
                   alt="guy"
                 />
               </div>
@@ -79,7 +79,7 @@ function App() {
               </div>
             </button>
           </div>
-          <div className="flex p-4 flex-wrap">
+          <div className="flex p-4 flex-wrap items-center justify-center w-full">
             {taskLists.map((list) => (
               <TaskListUnit
                 key={list.id}
