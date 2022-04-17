@@ -4,6 +4,7 @@ import { turnOffModal } from "../../slices/taskModalSlice";
 import { addTaskToList } from "../../slices/taskListsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { GoX } from "react-icons/go";
+import difficulties from "../../shared/difficulties";
 
 const NewTaskModal = () => {
   const dispatch = useDispatch();
@@ -38,20 +39,39 @@ const NewTaskModal = () => {
           onChange={(e) => setNewDesc(e.target.value)}
         />
       </div>
-      <div className="flex my-2 items-center ">
-        <label className="mr-3 font-bold">Difficulty</label>
-        <input
-          type="number"
-          min={1}
-          max={3}
-          className="border-brand-light border-2 rounded-md p-1 focus:outline-none focus:border-brand-main"
-          value={newDifficulty}
-          onChange={(event) => setNewDifficulty(parseInt(event.target.value))}
-        />
+      <div className="flex my-2 items-center flex-col items-baseline w-10/12">
+        <label className="mr-3 font-bold mb-3">Difficulty</label>
+        <div className="flex w-full justify-evenly">
+          {difficulties.map((difficulty) => (
+            <div className="flex flex-col w-24 items-center">
+              <button
+                className={`${
+                  difficulty.value === newDifficulty
+                    ? "bg-brand-main"
+                    : "bg-brand-light"
+                }  hover:bg-brand-main ease-in-out duration-150 w-8 h-8 rounded-full p-1`}
+                onClick={() => setNewDifficulty(difficulty.value)}
+              >
+                <img
+                  src={`/images/icons/diff-${difficulty.value}.png`}
+                  className="w-6"
+                  alt={difficulty.value}
+                />
+              </button>
+              <p
+                className={
+                  difficulty.value === newDifficulty ? "font-bold" : ""
+                }
+              >
+                {difficulty.name}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="flex w-6/12 justify-around text-white font-bold">
         <button
-          disabled={newName === "" || newDifficulty < 1 || newDifficulty > 3}
+          disabled={newName === ""}
           className="bg-brand-main rounded-xl px-6 py-2 disabled:opacity-75 disabled:text-gray
                 hover:bg-brand-light ease-in-out duration-150"
           onClick={() => {

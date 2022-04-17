@@ -5,6 +5,7 @@ import { changeTaskCompletition, editTask } from "../../slices/taskListsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { GoCheck, GoX } from "react-icons/go";
 import { findTask } from "../../utils/finders";
+import difficulties from "../../shared/difficulties";
 
 const EditTaskModal = () => {
   const dispatch = useDispatch();
@@ -124,27 +125,46 @@ const EditTaskModal = () => {
           </>
         )}
       </div>
-      <div className="flex my-2 items-center ">
-        <label className="mr-3 font-bold">Difficulty </label>
-        <input
-          type="number"
-          min={1}
-          max={3}
-          className="border-brand-light border-2 rounded-md p-1 focus:outline-none focus:border-brand-main"
-          value={newDifficulty}
-          onChange={(event) => {
-            const diffToInt = parseInt(event.target.value);
-            setNewDifficulty(diffToInt);
-            dispatch(
-              editTask({
-                listId: taskModal.togglerId,
-                taskId: taskModal.secondaryTogglerId,
-                difficulty: diffToInt,
-              })
-            );
-          }}
-        />
+      <div className="flex my-2 items-center flex-col items-baseline w-10/12">
+        <label className="mr-3 font-bold mb-3">Difficulty</label>
+        <div className="flex w-full justify-evenly">
+          {difficulties.map((difficulty) => (
+            <div className="flex flex-col w-24 items-center">
+              <button
+                className={`${
+                  difficulty.value === newDifficulty
+                    ? "bg-brand-main"
+                    : "bg-brand-light"
+                }  hover:bg-brand-main ease-in-out duration-150 w-8 h-8 rounded-full p-1`}
+                onClick={() => {
+                  setNewDifficulty(difficulty.value);
+                  dispatch(
+                    editTask({
+                      listId: taskModal.togglerId,
+                      taskId: taskModal.secondaryTogglerId,
+                      difficulty: difficulty.value,
+                    })
+                  );
+                }}
+              >
+                <img
+                  src={`/images/icons/diff-${difficulty.value}.png`}
+                  className="w-6"
+                  alt={difficulty.value}
+                />
+              </button>
+              <p
+                className={
+                  difficulty.value === newDifficulty ? "font-bold" : ""
+                }
+              >
+                {difficulty.name}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
+
       <div className="flex w-6/12 justify-around text-white font-bold">
         <button
           className={`${

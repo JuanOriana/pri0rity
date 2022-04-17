@@ -41,7 +41,11 @@ const TaskListUnit = ({ id, name, tasks }) => {
               task.isDone ? "line-through text-gray-300" : ""
             }`}
           >
-            {task.difficulty}
+            <img
+              src={`/images/icons/diff-${task.difficulty}.png`}
+              className="w-6"
+              alt={task.difficulty}
+            />
           </p>
         </div>
       ))}
