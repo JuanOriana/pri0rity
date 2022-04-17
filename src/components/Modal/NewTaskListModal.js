@@ -28,10 +28,11 @@ const NewTaskListModal = () => {
       </span>
       <h1 className="text-lg font-bold">Add a new task group</h1>
       <div className="w-10/12 border-t border-gray-300 mb-2" />
-      <div className="flex my-2 items-center flex-col items-baseline w-10/12 ">
+      <div className="flex my-2 items-center flex-col items-baseline w-full sm:w-10/12 ">
         <label className="font-bold">Name</label>
         <ModalInput
           type="text"
+          maxLength="40"
           value={newName}
           changer={setNewName}
           onKeyDown={(e) =>

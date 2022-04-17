@@ -11,7 +11,7 @@ const NewTaskModal = () => {
   const taskModal = useSelector((state) => state.taskModal);
   const [newName, setNewName] = useState("");
   const [newDesc, setNewDesc] = useState("");
-  const [newDifficulty, setNewDifficulty] = useState(1);
+  const [newDifficulty, setNewDifficulty] = useState(difficulties[2].value);
 
   return (
     <ModalBase>
@@ -27,11 +27,16 @@ const NewTaskModal = () => {
       </span>
       <h1 className="text-lg font-bold">Add a new task</h1>
       <div className="w-10/12 border-t border-gray-300 mb-2" />
-      <div className="flex my-2 items-center flex-col items-baseline w-10/12 ">
+      <div className="flex my-2 items-center flex-col items-baseline w-full sm:w-10/12 ">
         <label className="font-bold">Name</label>
-        <ModalInput type="text" value={newName} changer={setNewName} />
+        <ModalInput
+          type="text"
+          value={newName}
+          changer={setNewName}
+          maxLength="30"
+        />
       </div>
-      <div className="flex my-2 items-center flex-col items-baseline w-10/12 ">
+      <div className="flex my-2 items-center flex-col items-baseline w-full sm:w-10/12 ">
         <label className="font-bold">Description:</label>
         <textarea
           className="w-full border-2 border-brand-light rounded-md p-1 resize-none h-32 focus:outline-none focus:border-brand-main"
@@ -39,13 +44,13 @@ const NewTaskModal = () => {
           onChange={(e) => setNewDesc(e.target.value)}
         />
       </div>
-      <div className="flex my-2 items-center flex-col items-baseline w-10/12">
+      <div className="flex my-2 items-center flex-col items-baseline w-full sm:w-10/12">
         <label className="mr-3 font-bold mb-3">Difficulty</label>
         <div className="flex w-full justify-evenly">
           {difficulties.map((difficulty) => (
             <div
               key={difficulty.value}
-              className="flex flex-col w-24 items-center"
+              className="flex flex-col w-12 sm:w-24 items-center"
             >
               <button
                 className={`${
@@ -62,9 +67,9 @@ const NewTaskModal = () => {
                 />
               </button>
               <p
-                className={
+                className={`${
                   difficulty.value === newDifficulty ? "font-bold" : ""
-                }
+                } text-center`}
               >
                 {difficulty.name}
               </p>

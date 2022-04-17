@@ -35,7 +35,7 @@ function App() {
               <div className="flex">
                 <p
                   className="bg-brand-main w-80 self-center mb-3 text-white p-4 ease-in-out duration-150
-            rounded-2xl rounded-br-sm text-center -mt-8 hover:bg-brand-light cursor-pointer"
+            rounded-2xl rounded-br-sm text-center -mt-8 hover:bg-brand-light cursor-pointer text-sm sm:text-md"
                   onClick={() =>
                     dispatch(
                       turnOnModal({
@@ -47,16 +47,18 @@ function App() {
                   }
                 >
                   You should probably be working on that{" "}
-                  <b>{optimalTask.name} </b>
+                  <b>
+                    {optimalTask.name.length > 25
+                      ? optimalTask.name.substring(0, 25) + "..."
+                      : optimalTask.name}{" "}
+                  </b>
                   activity in your{" "}
-                  <b className="text-orange-400">
-                    {optimalTask.list.name}
-                  </b>{" "}
+                  <b className="text-orange-400">{optimalTask.list.name}</b>{" "}
                   group!
                 </p>
                 <img
                   src="/images/lil_guy.svg"
-                  className="w-64 mt-12 "
+                  className="w-32 mt-24 sm:mt-12 sm:w-64"
                   alt="guy"
                 />
               </div>

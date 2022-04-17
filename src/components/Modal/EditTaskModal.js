@@ -33,15 +33,21 @@ const EditTaskModal = () => {
       </span>
       {!editingName && (
         <h1
-          className="text-lg font-bold w-10/12 hover:bg-gray-200 cursor-pointer rounded-md p-1 ease-in-out duration-200"
+          className="text-lg font-bold w-full sm:w-10/12 hover:bg-gray-200 cursor-pointer rounded-md p-1 ease-in-out duration-200"
           onClick={() => setEditingName(true)}
         >
           {task.name}
         </h1>
       )}
       {editingName && (
-        <div className="flex mt-2 items-center flex-col items-baseline w-10/12 ">
-          <ModalInput type="text" value={newName} changer={setNewName} bold />{" "}
+        <div className="flex mt-2 items-center flex-col items-baseline w-full sm:w-10/12 ">
+          <ModalInput
+            type="text"
+            value={newName}
+            changer={setNewName}
+            bold
+            maxLength="30"
+          />{" "}
           <div className="flex self-end mr-1 text-center p-0 text-xl -mt-0.5 z-1">
             <button
               className="bg-white flex justify-center self-end rounded-bl-xl w-12 text-red-700 border-2 hover:bg-gray-200 border-brand-light"
@@ -73,7 +79,7 @@ const EditTaskModal = () => {
         </div>
       )}
       <div className="w-10/12 border-t border-gray-300 mb-2" />
-      <div className="flex my-2 items-center flex-col items-baseline w-10/12 ">
+      <div className="flex my-2 items-center flex-col items-baseline w-full sm:w-10/12 ">
         {task.description && (
           <>
             <label className="font-bold">Description</label>
@@ -104,7 +110,7 @@ const EditTaskModal = () => {
                     <GoX />
                   </button>
                   <button
-                    className="bg-white flex justify-center rounded-br-xl w-12 text-green-700 border-2 hover:bg-gray-200 border-brand-light"
+                    className="bg-white flex justify-center rounded-br-xl min-w-12 text-green-700 border-2 hover:bg-gray-200 border-brand-light"
                     onClick={() => {
                       setTask({ ...task, description: newDesc });
                       dispatch(
@@ -125,7 +131,7 @@ const EditTaskModal = () => {
           </>
         )}
       </div>
-      <div className="flex my-2 items-center flex-col items-baseline w-10/12">
+      <div className="flex my-2 items-center flex-col items-baseline w-full sm:w-10/12 ">
         <label className="mr-3 font-bold mb-3">Difficulty</label>
         <div className="flex w-full justify-evenly">
           {difficulties.map((difficulty) => (
@@ -169,14 +175,14 @@ const EditTaskModal = () => {
       </div>
       <div className="w-10/12 border-t border-gray-300 mb-2" />
 
-      <div className="flex w-10/12 text-white font-bold items-center mr-4 justify-center mt-3">
+      <div className="flex w-w-full sm:w-10/12 text-white font-bold items-center mr-4 justify-center mt-3">
         <label className="font-bold text-black mr-3">Status: </label>
         <button
           className={`${
             task.isDone
               ? "bg-green-400 hover:bg-green-300"
               : "bg-brand-main hover:bg-brand-light"
-          } rounded-xl px-6 py-2 disabled:opacity-75 disabled:text-gray w-4/12
+          } rounded-xl px-6 py-2 disabled:opacity-75 disabled:text-gray min-w-4/12
                  ease-in-out duration-150 self-center`}
           onClick={() => {
             setTask({ ...task, isDone: !task.isDone });

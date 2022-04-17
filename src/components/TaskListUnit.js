@@ -11,8 +11,10 @@ const TaskListUnit = ({ id, name, tasks }) => {
       className="bg-brand-main flex flex-col rounded-xl text-white w-80 mx-4 mb-4 h-80
     shadow-[0_15px_60px_-15px_rgba(0,0,0,0.3)]"
     >
-      <div className="flex justify-between px-6 py-2">
-        <h3 className="text-lg font-bold text-white">{name}</h3>
+      <div className="flex justify-between items-start px-6 py-2 mt-1">
+        <h3 className="text-lg font-bold text-white w-10/12 break-all">
+          {name}
+        </h3>
         <button onClick={() => dispatch(removeList(id))}>
           <GoTrashcan />
         </button>
@@ -33,8 +35,14 @@ const TaskListUnit = ({ id, name, tasks }) => {
             )
           }
         >
-          <p className={` ${task.isDone ? "line-through text-gray-300" : ""}`}>
-            {task.name}
+          <p
+            className={`overflow-hidden w-10/12  ${
+              task.isDone ? "line-through text-gray-300" : ""
+            }`}
+          >
+            {task.name.length > 25
+              ? task.name.substring(0, 25) + "..."
+              : task.name}
           </p>
           <p
             className={`w-6 bg-brand-dark text-center rounded-xl ${
