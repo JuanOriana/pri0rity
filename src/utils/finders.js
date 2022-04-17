@@ -38,5 +38,5 @@ export function findOptimalTask(state) {
       }
     }
   });
-  return { ...maxTask, listName: state[maxListIdx].name };
+  return { ...maxTask, list: state[maxListIdx] };
 }

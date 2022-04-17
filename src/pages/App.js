@@ -9,7 +9,7 @@ import EditTaskModal from "../components/Modal/EditTaskModal";
 import { findOptimalTask } from "../utils/finders";
 
 function App() {
-  const taskLists = useSelector((state) => state.taskLists) || [];
+  const taskLists = useSelector((state) => state.taskLists);
   const taskModal = useSelector((state) => state.taskModal);
   const dispatch = useDispatch();
   const optimalTask = useMemo(() => findOptimalTask(taskLists), [taskLists]);
@@ -34,13 +34,24 @@ function App() {
             {taskLists.length > 0 && optimalTask && (
               <div className="flex">
                 <p
-                  className="bg-brand-main w-80 self-center mb-3 text-white p-4
-            rounded-2xl rounded-br-sm text-center -mt-8"
+                  className="bg-brand-main w-80 self-center mb-3 text-white p-4 ease-in-out duration-150
+            rounded-2xl rounded-br-sm text-center -mt-8 hover:bg-brand-light cursor-pointer"
+                  onClick={() =>
+                    dispatch(
+                      turnOnModal({
+                        id: optimalTask.list.id,
+                        secondaryId: optimalTask.id,
+                        type: toggleTypes.TOGGLE_EDIT_TASK,
+                      })
+                    )
+                  }
                 >
                   You should probably be working on that{" "}
                   <b>{optimalTask.name} </b>
                   activity in your{" "}
-                  <b className="text-orange-400">{optimalTask.listName}</b>{" "}
+                  <b className="text-orange-400">
+                    {optimalTask.list.name}
+                  </b>{" "}
                   group!
                 </p>
                 <img

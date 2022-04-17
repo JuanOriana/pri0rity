@@ -38,7 +38,7 @@ const TaskListUnit = ({ id, name, tasks }) => {
           </p>
           <p
             className={`w-6 bg-brand-dark text-center rounded-xl ${
-              task.isDone ? "line-through text-gray-300" : ""
+              task.isDone ? "bg-gray-400" : ""
             }`}
           >
             <img

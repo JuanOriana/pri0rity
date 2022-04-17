@@ -43,7 +43,10 @@ const NewTaskModal = () => {
         <label className="mr-3 font-bold mb-3">Difficulty</label>
         <div className="flex w-full justify-evenly">
           {difficulties.map((difficulty) => (
-            <div className="flex flex-col w-24 items-center">
+            <div
+              key={difficulty.value}
+              className="flex flex-col w-24 items-center"
+            >
               <button
                 className={`${
                   difficulty.value === newDifficulty

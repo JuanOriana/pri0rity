@@ -129,7 +129,10 @@ const EditTaskModal = () => {
         <label className="mr-3 font-bold mb-3">Difficulty</label>
         <div className="flex w-full justify-evenly">
           {difficulties.map((difficulty) => (
-            <div className="flex flex-col w-24 items-center">
+            <div
+              key={difficulty.value}
+              className="flex flex-col w-24 items-center"
+            >
               <button
                 className={`${
                   difficulty.value === newDifficulty
@@ -164,15 +167,17 @@ const EditTaskModal = () => {
           ))}
         </div>
       </div>
+      <div className="w-10/12 border-t border-gray-300 mb-2" />
 
-      <div className="flex w-6/12 justify-around text-white font-bold">
+      <div className="flex w-10/12 text-white font-bold items-center mr-4 justify-center mt-3">
+        <label className="font-bold text-black mr-3">Status: </label>
         <button
           className={`${
             task.isDone
               ? "bg-green-400 hover:bg-green-300"
               : "bg-brand-main hover:bg-brand-light"
-          } rounded-xl px-6 py-2 disabled:opacity-75 disabled:text-gray
-                 ease-in-out duration-150`}
+          } rounded-xl px-6 py-2 disabled:opacity-75 disabled:text-gray w-4/12
+                 ease-in-out duration-150 self-center`}
           onClick={() => {
             setTask({ ...task, isDone: !task.isDone });
             dispatch(
@@ -183,7 +188,7 @@ const EditTaskModal = () => {
             );
           }}
         >
-          {task.isDone ? "Completed" : "Complete!"}
+          {task.isDone ? "Completed" : "In progress"}
         </button>
       </div>
     </ModalBase>
